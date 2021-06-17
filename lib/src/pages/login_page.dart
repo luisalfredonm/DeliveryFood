@@ -58,7 +58,7 @@ class LoginPage extends StatelessWidget {
                     _emailInput(),
                     _passwordInput(),
                     _buttonLogin(context),
-                    _forgotPassword(),
+                    _forgotPassword(context),
                     _signIn(context)
                   ],
                 ),
@@ -141,15 +141,20 @@ Widget _buttonLogin(BuildContext context) {
   );
 }
 
-Widget _forgotPassword() {
+Widget _forgotPassword(BuildContext context) {
   return Container(
     margin: EdgeInsets.only(top: 30.0),
-    child: Text(
-      'Forgot you password',
-      style: TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.w400,
-        fontSize: 17.0,
+    child: GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, 'forgotpassword');
+      },
+      child: Text(
+        'Forgot you password',
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.w400,
+          fontSize: 17.0,
+        ),
       ),
     ),
   );
