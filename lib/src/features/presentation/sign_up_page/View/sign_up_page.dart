@@ -22,10 +22,9 @@ class SignUpPage extends StatelessWidget {
           child: Column(
             children: [
               headerText(
-                'Create an account',
-                primaryColor,
-                FontWeight.bold,
-                30.0,
+                texto: 'Create an account',
+                color: primaryColor,
+                fontSize: 30.0,
               ),
               _userInput(context),
               _emailInput(context),

@@ -33,8 +33,10 @@ class WelcomePage extends StatelessWidget {
             children: [
               Container(
                   padding: EdgeInsets.symmetric(horizontal: 50.0),
-                  child: headerText('DELIVERED FAST FOOD TO YOUR DOOR ',
-                      Colors.white, FontWeight.bold, 45.0)),
+                  child: headerText(
+                      texto: 'DELIVERED FAST FOOD TO YOUR DOOR ',
+                      color: Colors.white,
+                      fontSize: 45.0)),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 30.0),
                 child: Text(
@@ -52,12 +54,11 @@ class WelcomePage extends StatelessWidget {
                     Navigator.pushNamed(context, 'login');
                   }),
               roundedButton(
-                labelButton: 'Connect with facebook',
-                color: fbbuttonColor,
-                isWithIcon: true,
-                icon: AssetImage('assets/facebook.png'),
-                func: () => print('go to facebook')
-              ),
+                  labelButton: 'Connect with facebook',
+                  color: fbbuttonColor,
+                  isWithIcon: true,
+                  icon: AssetImage('assets/facebook.png'),
+                  func: () => print('go to facebook')),
               // aqui va el boton azul del facebook
             ],
           )

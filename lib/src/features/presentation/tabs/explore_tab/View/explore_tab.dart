@@ -1,5 +1,6 @@
 import 'package:deliveryfood/src/colors/colors.dart';
 import 'package:deliveryfood/src/features/presentation/commons_widgets/headers_text.dart';
+import 'package:deliveryfood/src/features/presentation/commons_widgets/popular_cards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
@@ -18,12 +19,33 @@ class ExploreTab extends StatelessWidget {
               _discoverNewPlaces(context),
               _sliderCards(context),
               _headers(context, 'Popular this week', "Show all"),
-              _populares(context,
-                  'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'),
-              _populares(context,
-                  'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'),
-              _populares(context,
-                  'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'),
+              popularesCard(
+                  image: NetworkImage(
+                      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'),
+                  title: "Andy & Cindy's Diner",
+                  subtitle: "87 Botsford Circle Apt",
+                  review: "4.8",
+                  ratings: "(233 ratings)",
+                  buttonText: 'Delivery',
+                  hasActionButton: true),
+              popularesCard(
+                  image: NetworkImage(
+                      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'),
+                  title: "Andy & Cindy's Diner",
+                  subtitle: "87 Botsford Circle Apt",
+                  review: "4.8",
+                  ratings: "(233 ratings)",
+                  buttonText: 'Delivery',
+                  hasActionButton: true),
+              popularesCard(
+                  image: NetworkImage(
+                      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'),
+                  title: "Andy & Cindy's Diner",
+                  subtitle: "87 Botsford Circle Apt",
+                  review: "4.8",
+                  ratings: "(233 ratings)",
+                  buttonText: 'Delivery',
+                  hasActionButton: true),
               SizedBox(height: 10.0),
               _headers(context, 'Collections', "Show all"),
               _sliderCollection(),
@@ -38,30 +60,33 @@ class ExploreTab extends StatelessWidget {
 Widget _topbar(BuildContext context) {
   return Row(
     children: [
-      Container(
-        width: 320,
-        margin: EdgeInsets.only(left: 16.0),
-        padding: EdgeInsets.all(10.0),
-        decoration: BoxDecoration(
-            border: Border.all(
-              color: Color.fromRGBO(234, 236, 239, 1.0),
-            ),
-            borderRadius: BorderRadius.circular(20.0)),
-        child: Row(
-          children: [
-            Icon(
-              Icons.search,
-              size: 20.0,
-              color: gris,
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 5.0),
-              child: Text(
-                'Search',
-                style: TextStyle(color: gris, fontSize: 17.0),
+      GestureDetector(
+        onTap: () => Navigator.pushNamed(context, 'search'),
+        child: Container(
+          width: 320,
+          margin: EdgeInsets.only(left: 16.0),
+          padding: EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+              border: Border.all(
+                color: Color.fromRGBO(234, 236, 239, 1.0),
               ),
-            )
-          ],
+              borderRadius: BorderRadius.circular(20.0)),
+          child: Row(
+            children: [
+              Icon(
+                Icons.search,
+                size: 20.0,
+                color: gris,
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 5.0),
+                child: Text(
+                  'Search',
+                  style: TextStyle(color: gris, fontSize: 17.0),
+                ),
+              )
+            ],
+          ),
         ),
       ),
       Container(
@@ -78,7 +103,9 @@ Widget _topbar(BuildContext context) {
             size: 30,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, 'filter');
+          },
         ),
       ),
     ],
@@ -91,10 +118,9 @@ Widget _discoverNewPlaces(BuildContext context) {
       margin: EdgeInsets.symmetric(vertical: 20.0),
       alignment: Alignment.centerLeft,
       child: headerText(
-        'Discover new places',
-        Colors.black,
-        FontWeight.bold,
-        30.0,
+        texto: 'Discover new places',
+        color: Colors.black,
+        fontSize: 30.0,
       ));
 }
 
@@ -116,6 +142,7 @@ Widget _sliderCards(BuildContext context) {
   );
 }
 
+//Discovery new places carrusel
 Widget _tarjeta(BuildContext context) {
   return Container(
     margin: EdgeInsets.all(5.0),
@@ -210,10 +237,8 @@ Widget _headers(BuildContext context, String textHeader, String textAction) {
         margin: EdgeInsets.only(left: 5.0),
         alignment: Alignment.centerLeft,
         child: headerText(
-          textHeader,
-          Colors.black,
-          FontWeight.bold,
-          20.0,
+          texto: textHeader,
+          fontSize: 20.0,
         ),
       ),
       Spacer(),
@@ -232,105 +257,6 @@ Widget _headers(BuildContext context, String textHeader, String textAction) {
           ],
         ),
       ),
-    ],
-  );
-}
-
-Widget _populares(BuildContext context, String foto) {
-  return Column(
-    children: [
-      Container(
-        padding: EdgeInsets.symmetric(vertical: 10.0),
-        child: Container(
-          margin: EdgeInsets.only(left: 10.0),
-          child: Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: Image(
-                  width: 80.0,
-                  height: 80.0,
-                  fit: BoxFit.cover,
-                  image: NetworkImage(foto),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 20.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 7.0),
-                      child: headerText(
-                        "Andy & Cindy Diner",
-                        Colors.black,
-                        FontWeight.bold,
-                        17.0,
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      margin: EdgeInsets.only(bottom: 5.0),
-                      child: Text(
-                        "87 Botsford Circle Apt",
-                        style: TextStyle(
-                            color: gris,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 13.0),
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.star,
-                          color: amarillo,
-                          size: 16.0,
-                        ),
-                        Text(
-                          "4.9",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 13.0),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 5.0),
-                          child: Text(
-                            "1234 ratings",
-                            style: TextStyle(
-                                color: gris,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 13.0),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 35.0),
-                          width: 110.0,
-                          height: 18.0,
-                          child: RaisedButton(
-                            elevation: 0.5,
-                            shape: StadiumBorder(),
-                            color: orange,
-                            onPressed: () {},
-                            child: Text(
-                              'Delivery',
-                              style: TextStyle(
-                                fontSize: 11.0,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-      )
     ],
   );
 }

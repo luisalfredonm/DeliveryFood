@@ -27,7 +27,10 @@ class ForgotPassword extends StatelessWidget {
           child: Column(
             children: [
               headerText(
-                  'Forgot password', primaryColor, FontWeight.bold, 30.0),
+                texto: 'Forgot password',
+                color: primaryColor,
+                fontSize: 30.0,
+              ),
               Container(
                 padding: EdgeInsets.all(10.0),
                 child: Text(
